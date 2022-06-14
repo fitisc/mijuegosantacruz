@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { Header } from './components/Index.js';
-import StartGame from './Screens/start-game/Index.js';
-import {styles} from './styles';
+import { StartGame } from './screens/StartGame/Index.js';
+import { styles } from './styles';
+
 
 export default function App() {
   return (
