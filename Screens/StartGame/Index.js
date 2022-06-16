@@ -2,14 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { View, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { Button } from 'react-native';
-import { Card, Input } from '../../components/Index';
+import { Card, Input, NumberContainer } from '../../components/Index';
 import { Alert } from 'react-native';
-import { NumberContainer } from '../../components/NumberContainer/Index';
 import {styles} from './styles';
-import themes from '../../Constantes/themes';
+//import themes from '../../Constantes/themes.js';
 
 
-const StartGame = () => {
+const StartGame = (onStartGame) => {
     const [enteredValue, setEnteredValue] = useState('');
     const [confirmed, setConfirmed] = useState(false);
     const [selectedNumber, setSelectedNumber] = useState();
@@ -31,7 +30,7 @@ const StartGame = () => {
             return;
         }
         setConfirmed(true);
-        selectedNumber = chosenNumber;
+        setSelectedNumber(chosenNumber);
         setEnteredValue('');
         
 
@@ -43,8 +42,8 @@ const StartGame = () => {
             <NumberContainer>{selectedNumber}</NumberContainer>
             <Button 
             title="Empezar juego" 
-            onPress={() => null} 
-            color={themes.colors.primaryColor} />
+            onPress={() => onStartGame(selectedNumber)} 
+            color= '#d81515' />
         </Card>
         ) : null;
 
@@ -71,7 +70,7 @@ const StartGame = () => {
                 onChangeText={(text) => onHandlerChangeText(text)}
                 />
                 <View style={styles.buttonContainer}>
-                    <Button title="Limpiar" color={themes.colors.buttonColor} onPress={() => onHandlerReset()} />
+                    <Button title="Limpiar" color="#d81515" onPress={() => onHandlerReset()} />
                     <Button title="Confirmar" color="#d81515" onPress={() => onHandlerConfirm()} />
                 </View>
             </Card>
